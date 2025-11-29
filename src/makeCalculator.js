@@ -9,17 +9,25 @@ function makeCalculator() {
   let result = 0;
 
   const calculator = {
+    // Getter usa a sintaxe de propriedade abreviada
     get result() {
       return result;
     },
 
-    add: (a, b) => a + b,
+    // Métodos de callback (usando sintaxe abreviada para consistência)
+    add(a, b) {
+      return a + b;
+    },
 
-    subtract: (a, b) => a - b,
+    subtract(a, b) {
+      return a - b;
+    },
 
-    multiply: (a, b) => a * b,
+    multiply(a, b) {
+      return a * b;
+    },
 
-    divide: (a, b) => {
+    divide(a, b) {
       if (b === 0) {
         return NaN;
       }
@@ -27,17 +35,20 @@ function makeCalculator() {
       return a / b;
     },
 
+    // Métodos principais (já estavam corretos)
     operate(callback, num) {
+      // 'this' aqui se refere ao objeto 'calculator'
       result = callback(result, num);
 
       return this;
     },
 
     reset() {
+      // 'this' aqui se refere ao objeto 'calculator'
       result = 0;
 
       return this;
-    },
+    }
   };
 
   return calculator;
